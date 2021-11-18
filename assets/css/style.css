@@ -1,0 +1,9 @@
+header {
+    height: 70px;
+    width: auto;
+};
+header p {
+    margin: auto;
+    font-size: 30px;
+};
+
