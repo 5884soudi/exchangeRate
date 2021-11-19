@@ -41,6 +41,8 @@ $(function () {
             //通信成功時の処理
             //成功したとき実行したいスクリプトを記載
             console.log(response);
+            console.log(response.rates.AED);
+
         })
         .fail(function (xhr) {
             //通信失敗時の処理
