@@ -40,7 +40,7 @@ $(function () {
         .done(function (response) {
             //通信成功時の処理
             //成功したとき実行したいスクリプトを記載
-            console.log(response.rates.JPY);
+            console.log(response.rates.EUR);
             // var key = Object.keys(response.rates);
             for (const key in response.rates) {
                 console.log(key);
@@ -53,10 +53,21 @@ $(function () {
                 console.log($(this).val());
                 let cnt = $(this).val();
                 // console.log(cnt);
-                console.log(response.rates.JPY);
                 let math = Math.round(response.rates[cnt]);
                 console.log(math);
             });
+            $('#convert').click(function(){
+                console.log($(this));
+                let amountJP = $("#jpAmount").val()
+                console.log(amountJP);
+                let amountEUR = amountJP / 130;
+                console.log(amountEUR);
+                $('#EURamount').val(amountEUR);                
+            });
+            $('#exchange').click(function(){
+                console.log($('#amount').val());
+            })
+
         })
         .fail(function (xhr) {
             //通信失敗時の処理
