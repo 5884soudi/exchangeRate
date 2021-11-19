@@ -1,31 +1,41 @@
 $(function () {
 
     // set endpoint and your access key
-    // endpoint = 'latest'
-    // access_key = '373f6a4c6a91b0d67715af14b524c847';
+    // endpoint = ''
+    // access_key = '';
+
+
+    // get the most recent exchange rates via the "latest" endpoint:
     // $.ajax({
-    //     url: 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847',
+    //     url: 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847&format=1',
     //     dataType: 'jsonp',
     //     success: function (json) {
+
     //         // exchange rata data is stored in json.rates
     //         alert(json.rates.GBP);
+
     //         // base currency is stored in json.base
     //         alert(json.base);
+    //         console.log(json.base);
+
     //         // timestamp can be accessed in json.timestamp
     //         alert(json.timestamp);
-    //     },
+
+    //     }
     // });
+
+
     let data = {
         access_key: '373f6a4c6a91b0d67715af14b524c847',
-    }
 
+    };
 
     $.ajax({
         url: 'http://api.exchangeratesapi.io/v1/latest', //アクセスするURL
         type: 'get',　　 //post or get
         cache: false,        //cacheを使うか使わないかを設定
         dataType: 'jsonp',     //data type script・xmlDocument・jsonなど
-        data: data,           //アクセスするときに必要なデータを記載      
+        data: data,           //アクセスするときに必要なデータを記載    
     })
         .done(function (response) {
             //通信成功時の処理
@@ -41,9 +51,4 @@ $(function () {
             //結果に関わらず実行したいスクリプトを記載
         });
 
-
 });
-
-// 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847&format=1'
-
-// https://api.exchangeratesapi.io/v1/symbols?access_key=373f6a4c6a91b0d67715af14b524c847
