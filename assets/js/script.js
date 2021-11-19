@@ -40,9 +40,14 @@ $(function () {
         .done(function (response) {
             //通信成功時の処理
             //成功したとき実行したいスクリプトを記載
-            console.log(response);
-            console.log(response.rates.AED);
-
+            console.log(response.rates.JPY);
+            let math = Math.round(response.rates.JPY);
+            console.log(math);
+            // var key = Object.keys(response.rates);
+            for (const key in response.rates) {
+                console.log(key);
+                
+            }
         })
         .fail(function (xhr) {
             //通信失敗時の処理
