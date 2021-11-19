@@ -1,5 +1,30 @@
 $(function () {
 
+    // set endpoint and your access key
+    // endpoint = ''
+    // access_key = '';
+
+
+    // get the most recent exchange rates via the "latest" endpoint:
+    // $.ajax({
+    //     url: 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847&format=1',
+    //     dataType: 'jsonp',
+    //     success: function (json) {
+
+    //         // exchange rata data is stored in json.rates
+    //         alert(json.rates.GBP);
+
+    //         // base currency is stored in json.base
+    //         alert(json.base);
+    //         console.log(json.base);
+
+    //         // timestamp can be accessed in json.timestamp
+    //         alert(json.timestamp);
+
+    //     }
+    // });
+
+
     let data = {
         access_key: '373f6a4c6a91b0d67715af14b524c847',
 
@@ -15,7 +40,7 @@ $(function () {
         .done(function (response) {
             //通信成功時の処理
             //成功したとき実行したいスクリプトを記載
-            console.log(response.rates.JPY);
+            console.log(response.rates.EUR);
             // var key = Object.keys(response.rates);
             for (const key in response.rates) {
                 console.log(key);
@@ -27,10 +52,22 @@ $(function () {
             $('#country').change(function(){
                 console.log($(this).val());
                 let cnt = $(this).val();
-                console.log(response.rates.JPY);
+                // console.log(cnt);
                 let math = Math.round(response.rates[cnt]);
                 console.log(math);
             });
+            $('#convert').click(function(){
+                console.log($(this));
+                let amountJP = $("#jpAmount").val()
+                console.log(amountJP);
+                let amountEUR = amountJP / 130;
+                console.log(amountEUR);
+                $('#EURamount').val(amountEUR);                
+            });
+            $('#exchange').click(function(){
+                console.log($('#amount').val());
+            })
+
         })
         .fail(function (xhr) {
             //通信失敗時の処理
