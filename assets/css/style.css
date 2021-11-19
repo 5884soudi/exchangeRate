@@ -12,7 +12,7 @@ header p {
     font-size: 40px;
 }
 main {
-    height: 75vh;
+    height: auto;
     padding-top: 22px;
 }
 .a {
