@@ -2,7 +2,6 @@ $(function () {
 
     let data = {
         access_key: '373f6a4c6a91b0d67715af14b524c847',
-
     };
 
     $.ajax({
@@ -15,35 +14,32 @@ $(function () {
         .done(function (response) {
             //通信成功時の処理
             //成功したとき実行したいスクリプトを記載
-            // console.log(response.rates.EUR);
-            // var key = Object.keys(response.rates);
+
+            let amountEUR;　　//グローバル変数
+
+            //通貨名を順番に出力
             for (const key in response.rates) {
-                // console.log(key);
-                var option = $('<option>');
-                // console.log(option);
-                option.append(key);
-                $('#country').append(option);
-            }
-            $('#country').change(function(){
-                // console.log($(this).val());
-                let cnt = $(this).val();
-                // console.log(cnt);
-                let math = Math.round(response.rates[cnt]);
-                // console.log(math);
+                var option = $('<option>');　// optionタグを追加
+                option.append(key);　// <option>の中に通貨を順番に出力
+                $('#country').append(option);　//slectタグにoptionタグを追加
+            };
+            
+            // 日本円をEURに換金
+            $('#convert').click(function () {
+                let amountJP = $("#jpAmount").val();
+                amountEUR = amountJP / 130;　//日本円をEURに換金
+                $('#EURamount').val(amountEUR);　//二段目に出力
             });
-            $('#convert').click(function(){
-                // console.log($(this));
-                let amountJP = $("#jpAmount").val()
-                // console.log(amountJP);
-                let amountEUR = amountJP / 130;
-                // console.log(amountEUR);
-                $('#EURamount').val(amountEUR);                
+
+            // 通貨を選んでボタンを押すとその国の通貨を出力
+            $('#country').change(function () {
+                let cnt = $(this).val(); //その国の通貨名
+                let math = Math.round(response.rates[cnt]);  //その国の通貨の小数点以下を四捨五入
+                $('#exchange').click(function () {
+                    $('#amout').val('');　　//枠の中を空にする
+                    $('#amount').val(amountEUR * math);　　//ターゲットを出力　//fin
+                });
             });
-            $('#exchange').click(function(){
-                console.log($('#amount').val());
-
-            })
-
         })
         .fail(function (xhr) {
             //通信失敗時の処理
