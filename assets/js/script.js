@@ -15,13 +15,17 @@ $(function () {
     //         alert(json.timestamp);
     //     },
     // });
+    let data = {
+        access_key: '373f6a4c6a91b0d67715af14b524c847',
+    }
+
 
     $.ajax({
-        url: 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847', //アクセスするURL
+        url: 'http://api.exchangeratesapi.io/v1/latest', //アクセスするURL
         type: 'get',　　 //post or get
         cache: false,        //cacheを使うか使わないかを設定
         dataType: 'jsonp',     //data type script・xmlDocument・jsonなど
-        data: 1,           //アクセスするときに必要なデータを記載      
+        data: data,           //アクセスするときに必要なデータを記載      
     })
         .done(function (response) {
             //通信成功時の処理
@@ -41,3 +45,5 @@ $(function () {
 });
 
 // 'http://api.exchangeratesapi.io/v1/latest?access_key=373f6a4c6a91b0d67715af14b524c847&format=1'
+
+// https://api.exchangeratesapi.io/v1/symbols?access_key=373f6a4c6a91b0d67715af14b524c847
