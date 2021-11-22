@@ -34,15 +34,29 @@ $(function () {
             // 通貨を選んでボタンを押すとその国の通貨を出力
             $('#country').change(function () {
                 let cnt = $(this).val(); //その国の通貨名
-                let num = response.rates[cnt]
-                let math = Math.round(num * 100)/100;  //その国の通貨の小数点以下を四捨五入
+                console.log(response.rates[cnt]);
+                let math = Math.round(response.rates[cnt] *100)/100;  //その国の通貨の小数点以下を四捨五入
                 console.log(math);
                 $('#exchange').click(function () {
-                    $('#amout').val('');　　//枠の中を空にする
-                    let answer = Math.round(amountEUR * math * 100)/100;
-                    $('#amount').val((amountEUR * math));　　//ターゲットを出力　//fin
+                    $('#amout').text('');　　//枠の中を空にする
+                    $('#amount').append(amountEUR * math);　　//ターゲットを出力　//fin
+                    $('#amount').css({
+                        'textAlign':'center'
+                    })
                 });
             });
+            $('#exchange').on('mouseover',function(){
+                $(this).css({
+                    'backgroundColor':'black',
+                    'color':'white'
+                });
+            })
+            $('#exchange').mouseleave(function(){
+                $(this).css({
+                    'backgroundColor':'white',
+                    'color':'black'
+                });
+            })
         })
         .fail(function (xhr) {
             //通信失敗時の処理
