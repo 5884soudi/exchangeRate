@@ -31,14 +31,15 @@ $(function () {
 
             // 通貨を選んでボタンを押すとその国の通貨を出力
             $('#country').change(function () {
+                $('#amount').text('');　　//枠の中を空にする
                 let amountJP = $("#jpAmount").val();
                 let cnt = $(this).val(); //その国の通貨名
                 console.log(response.rates[cnt]);
                 let math = Math.round(response.rates[cnt] * 100) / 100;  //その国の通貨の小数点以下を四捨五入
                 console.log(math);
                 $('#exchange').click(function () {
+                    $('#amount').text('');　　//枠の中を空にする
                     amountEUR = amountJP / 130;　//日本円をEURに換金
-                    $('#amout').text('');　　//枠の中を空にする
                     let answer = Math.round(amountEUR * math*100)/100;
                     console.log(answer);
                     $('#amount').append(answer);　　//ターゲットを出力　//fin
