@@ -39,7 +39,9 @@ $(function () {
                 console.log(math);
                 $('#exchange').click(function () {
                     $('#amout').text('');　　//枠の中を空にする
-                    $('#amount').append(amountEUR * math);　　//ターゲットを出力　//fin
+                    let answer = Math.round(amountEUR * math*100)/100;
+                    console.log(answer);
+                    $('#amount').append(answer);　　//ターゲットを出力　//fin
                     $('#amount').css({
                         'textAlign':'center'
                     })
