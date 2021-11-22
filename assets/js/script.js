@@ -23,38 +23,38 @@ $(function () {
                 option.append(key);　// <option>の中に通貨を順番に出力
                 $('#country').append(option);　//slectタグにoptionタグを追加
             };
-            
-            // 日本円をEURに換金
-            $('#convert').click(function () {
-                let amountJP = $("#jpAmount").val();
-                amountEUR = amountJP / 130;　//日本円をEURに換金
-                $('#EURamount').val(amountEUR);　//二段目に出力
-            });
+
+            // // 日本円をEURに換金
+            // $('#convert').click(function () {
+            //     $('#EURamount').val(amountEUR);　//二段目に出力
+            // });
 
             // 通貨を選んでボタンを押すとその国の通貨を出力
             $('#country').change(function () {
+                let amountJP = $("#jpAmount").val();
                 let cnt = $(this).val(); //その国の通貨名
                 console.log(response.rates[cnt]);
-                let math = Math.round(response.rates[cnt] *100)/100;  //その国の通貨の小数点以下を四捨五入
+                let math = Math.round(response.rates[cnt] * 100) / 100;  //その国の通貨の小数点以下を四捨五入
                 console.log(math);
                 $('#exchange').click(function () {
+                    amountEUR = amountJP / 130;　//日本円をEURに換金
                     $('#amout').text('');　　//枠の中を空にする
                     $('#amount').append(amountEUR * math);　　//ターゲットを出力　//fin
                     $('#amount').css({
-                        'textAlign':'center'
+                        'textAlign': 'center'
                     })
                 });
             });
-            $('#exchange').on('mouseover',function(){
+            $('#exchange').on('mouseover', function () {
                 $(this).css({
-                    'backgroundColor':'black',
-                    'color':'white'
+                    'backgroundColor': 'black',
+                    'color': 'white'
                 });
             })
-            $('#exchange').mouseleave(function(){
+            $('#exchange').mouseleave(function () {
                 $(this).css({
-                    'backgroundColor':'white',
-                    'color':'black'
+                    'backgroundColor': 'white',
+                    'color': 'black'
                 });
             })
         })
