@@ -34,10 +34,13 @@ $(function () {
             // 通貨を選んでボタンを押すとその国の通貨を出力
             $('#country').change(function () {
                 let cnt = $(this).val(); //その国の通貨名
-                let math = Math.round(response.rates[cnt]);  //その国の通貨の小数点以下を四捨五入
+                let num = response.rates[cnt]
+                let math = Math.round(num * 100)/100;  //その国の通貨の小数点以下を四捨五入
+                console.log(math);
                 $('#exchange').click(function () {
                     $('#amout').val('');　　//枠の中を空にする
-                    $('#amount').val(amountEUR * math);　　//ターゲットを出力　//fin
+                    let answer = Math.round(amountEUR * math * 100)/100;
+                    $('#amount').val((amountEUR * math));　　//ターゲットを出力　//fin
                 });
             });
         })
