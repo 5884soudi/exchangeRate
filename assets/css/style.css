@@ -102,3 +102,16 @@ footer p {
     font-size: 20px;
     font-weight: bold;
 }
+
+
+/* ----------ここからレスポンシブ---------------------------------- */
+@media screen and (max-width:780px) {
+    .a,.b,.c {
+        height: 130px;
+        width: 300px;
+    }
+
+    .b img {
+        height: 35px;
+    }
+}
